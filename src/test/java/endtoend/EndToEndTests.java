@@ -1,4 +1,4 @@
-package search;
+package endtoend;
 
 import base.BaseTests;
 import org.testng.annotations.Test;

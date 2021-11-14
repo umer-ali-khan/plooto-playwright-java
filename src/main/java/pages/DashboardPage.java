@@ -15,7 +15,7 @@ public class DashboardPage {
     private String locator_pendingPayables = "[aria-controls=pending_payables]";
     private String locator_pendingPayablesHeading = "text=Payments currently in transit";
     private String locator_paymentsApprovalsBadgeCount = "a[href='#user/dashboard/approvePayments'] > .pull-right > .badge";
-    private String locator_paymentsPendingBadgeCount = "a[href='#user/dashboard/approvePayments'] > .pull-right > .badge";
+    private String locator_paymentsPendingBadgeCount = "a[href='#user/dashboard/pendingPayments'] > .pull-right > .badge";
     private String locator_cavages = "[title=Cavages]";
     private String locator_cavagesPaymentDetails = "text=Sent Payment Details";
 
