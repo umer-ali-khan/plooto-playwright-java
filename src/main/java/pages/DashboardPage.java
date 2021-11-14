@@ -49,7 +49,7 @@ public class DashboardPage {
         return page.innerText(locator_paymentsPendingBadgeCount);
     }
 
-    public void clickCavages() {
+    public void viewCavagesPaymentsdetails() {
         page.click(locator_cavages);
         page.waitForSelector(locator_cavagesPaymentDetails);
     }

@@ -5,15 +5,18 @@ import org.testng.annotations.Test;
 import pages.CompanySelectionPage;
 import pages.DashboardPage;
 import pages.LoginPage;
+import pages.ViewPaymentDetailsPage;
 
 import java.util.List;
 
 import static org.testng.Assert.*;
 
+
 public class EndToEndTests extends BaseTests {
 
     protected CompanySelectionPage companySelectionPage;
     protected DashboardPage dashboardPage;
+    protected ViewPaymentDetailsPage viewPaymentDetailsPage;
 
     @Test
     public void loginAndNavigate(){
@@ -29,7 +32,10 @@ public class EndToEndTests extends BaseTests {
         assertEquals(dashboardPage.getPendingApprovalBadgeCount(), "1");
         assertEquals(dashboardPage.getPendingPaymentsBadgeCount(), "39");
         dashboardPage.viewPendingPayments();
-        dashboardPage.clickCavages();
-
+        dashboardPage.viewCavagesPaymentsdetails();
+        viewPaymentDetailsPage = new ViewPaymentDetailsPage(page);
+        System.out.println(viewPaymentDetailsPage.getRecentTransactionsCount());
+        viewPaymentDetailsPage.getRecentTransactionsDetails()
+                .forEach(e -> System.out.println(e.toString()));
      }
 }
