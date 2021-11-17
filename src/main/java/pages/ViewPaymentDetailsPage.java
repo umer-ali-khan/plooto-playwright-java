@@ -9,27 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ViewPaymentDetailsPage {
+public class ViewPaymentDetailsPage extends BasePage{
 
-    private Page page;
-
-    private String locator_recentTransactions = ".editRow.h-du-8";
+//    private String locator_recentTransactions = ".editRow.h-du-8";
 
     public ViewPaymentDetailsPage(Page page){
-        this.page = page;
+        super(page);
     }
 
     public void waitForPaymentDetails() {
-        page.waitForSelector(locator_recentTransactions);
+        page.waitForSelector(locatorRepository.getProperty("locator_recentTransactions"));
     }
 
     public int getRecentTransactionsCount() {
-        return page.locator(locator_recentTransactions).count();
+        return page.locator(locatorRepository.getProperty("locator_recentTransactions")).count();
     }
 
     public List<RecentTransactions> getRecentTransactionsDetails() {
         List<RecentTransactions> recentTransactionsList = new ArrayList<>();
-        page.querySelectorAll(locator_recentTransactions)
+        page.querySelectorAll(locatorRepository.getProperty("locator_recentTransactions"))
                 .forEach(
                         transaction -> {
                             RecentTransactions recentTransaction = new RecentTransactions();
