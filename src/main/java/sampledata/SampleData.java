@@ -1,0 +1,8 @@
+package sampledata;
+
+public final class SampleData {
+    private SampleData() {}
+
+    public static final String CAVAGES_PAYMENT_DETAILS_JSON =
+            "{\"sentPaymentDetails\":{\"contact\":\"Cavages\",\"amount\":\"10.00 PHP = 0.20 USD *\",\"exchangeRate\":\"0.020157294\",\"requestedDebitDate\":\"01 Oct 2021\",\"status\":\"On Hold\",\"initiatedBy\":\"Robert Mason\",\"estimatedCreditDate\":\"06 Oct 2021 (Estimate based on requested debit date)\"},\"paymentAttachments\":{\"attachments\":\"None\"},\"approvalHistory\":\"Team Member\\tStatus\\tDecision Date\\nKevin Honig ( me )\\t\\n Approval Mandatory\\n\\t Reject  Approve\",\"paymentLines\":\"Memo\\tAmount\\n\\ntest\\n\\t10.00 PHP\\nTotal\\t10.00 PHP\",\"auditTrail\":\"Audit Trail\\nThis payment is on hold due to the following security issue: The account for user Carolyn Sears (CarolynSears@plooto.com) has been temporarily locked. Please contact Plooto support for assistance.\\nOctober 1, 2021 @ 10:53 am UTC\\nPayment initiated by Robert Mason (RobertMason@gmail.com)\\n(Additional approvals required)\",\"additionalDetails\":{\"createdDate\":\"01 Oct 2021\",\"payTo\":\"HSBC MANILA\\nPHP\",\"payFrom\":\"Main Account\\n*********863\"},\"recentTransactions\":[{\"contact\":\"Cavages\",\"status\":\"    \\nOn Hold\",\"requestedDebitDate\":\"04 Oct 2021\",\"completedDate\":\"07 Oct 2021\",\"amount\":{\"amountDetails\":\"10.00 PHP\",\"amountInUSD\":\"0.20 USD\"}},{\"contact\":\"Cavages\",\"status\":\"    \\nOn Hold\",\"requestedDebitDate\":\"01 Oct 2021\",\"completedDate\":\"06 Oct 2021\",\"amount\":{\"amountDetails\":\"10.00 PHP\",\"amountInUSD\":\"0.20 USD\"}}]}";
+}

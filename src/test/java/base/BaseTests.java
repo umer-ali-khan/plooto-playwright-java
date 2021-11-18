@@ -4,12 +4,16 @@ import com.microsoft.playwright.*;
 import enums.Browsers;
 import enums.Environments;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import pages.LoginPage;
 
 import java.io.*;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import static enums.Browsers.CHROME;
 
@@ -21,6 +25,7 @@ public class BaseTests {
     public static Properties envConfig;
     protected static String ENV = System.getProperty("env", Environments.QA.name());
     protected static String BROWSER = System.getProperty("browser", CHROME.name());
+    protected Logger log = Logger.getLogger("Tests");
 
     @BeforeClass
     public void setUp() throws IOException {

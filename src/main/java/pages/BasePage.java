@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import static org.testng.Assert.assertEquals;
 
 public abstract class BasePage {
-    Logger log = LogManager.getLogManager().getLogger("BasePage");
+    Logger log = Logger.getLogger("BasePage");
     protected Page page;
     protected static Properties locatorRepository;
     public BasePage(Page page) {

@@ -2,8 +2,7 @@ package pages;
 
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
-import model.RecentTransactions;
-import model.RecentTransactionsAmount;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +47,47 @@ public class ViewPaymentDetailsPage extends BasePage{
                         }
                 );
         return recentTransactionsList;
+    }
+
+    public  List<String> getPaymentDetailsVisibleButtonsText() {
+        return page.querySelectorAll(locatorRepository.getProperty("locator_viewPaymentDetails_visibleButtonsAtTop"))
+                .stream()
+                .map(ElementHandle::innerText)
+                .collect(Collectors.toList());
+    }
+
+    private  List<String> getPaymentDetailsValues() {
+        return page.querySelectorAll(locatorRepository.getProperty("locator_viewPaymentDetails_valueColumns"))
+                .stream()
+                .map(ElementHandle::innerText)
+                .collect(Collectors.toList());
+    }
+
+    public ViewPaymentDetails getPaymentDetails() {
+        ViewPaymentDetails paymentDetails = new ViewPaymentDetails();
+        paymentDetails.setRecentTransactions(getRecentTransactionsDetails());
+        List<String> paymentDetailsValues = getPaymentDetailsValues();
+        paymentDetails.setSentPaymentDetails(new SentPaymentDetails(
+                paymentDetailsValues.get(0),
+                paymentDetailsValues.get(1),
+                paymentDetailsValues.get(2),
+                paymentDetailsValues.get(3),
+                paymentDetailsValues.get(4),
+                paymentDetailsValues.get(5),
+                paymentDetailsValues.get(6)));
+        paymentDetails.setPaymentAttachments(new PaymentAttachments(paymentDetailsValues.get(7)));
+        paymentDetails.setAdditionalDetails(new AdditionalDetails(
+                paymentDetailsValues.get(8),
+                paymentDetailsValues.get(9),
+                paymentDetailsValues.get(10)
+        ));
+        List<String> approvalAndPaymentLinesText = page.querySelectorAll(locatorRepository.getProperty("locator_viewPaymentDetails_approvalAndPaymentLines"))
+                .stream()
+                .map(ElementHandle::innerText)
+                .collect(Collectors.toList());
+        paymentDetails.setApprovalHistory(approvalAndPaymentLinesText.get(0));
+        paymentDetails.setPaymentLines(approvalAndPaymentLinesText.get(1));
+        paymentDetails.setAuditTrail(page.innerText(locatorRepository.getProperty("locator_viewPaymentDetails_auditTrail")));
+        return paymentDetails;
     }
 }
